@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="SampleApi.Application/SampleApi.Application.csproj" Id="4b687338-40c5-460e-aafa-3acf9ff506f5" />
+  <Project Path="SampleApi.Domain/SampleApi.Domain.csproj" />
+  <Project Path="SampleApi.Infrastructure/SampleApi.Infrastructure.csproj" />
+  <Project Path="SampleApi/SampleApi.csproj" />
+</Solution>
