@@ -1,11 +1,20 @@
-﻿namespace SampleApi.Domain.Entities
+﻿using SampleApi.Domain.Common;
+
+namespace SampleApi.Domain.Entities
 {
-    public class User
+    public class User : BaseEntity
     {
         public string Username { get; set; } = string.Empty;
-        public int? CreatedById { get; set; }
-        public DateTime DateCreated { get; set; }
-        public int? UpdatedById { get; set; }
-        public DateTime DateUpdated { get; set; }
+        private User() { }
+
+        public User(string username, int? createdById)
+        {
+            if (string.IsNullOrWhiteSpace(username))
+                throw new ArgumentException("Username is required.");
+
+            Username = username;
+            CreatedById = createdById;
+            DateCreated = DateTime.UtcNow;
+        }
     }
 }

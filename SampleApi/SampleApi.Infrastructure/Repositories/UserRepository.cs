@@ -16,7 +16,8 @@ public class UserRepository : IUserRepository
         _connectionString =
             configuration.GetConnectionString("DefaultConnection")
             ?? throw new InvalidOperationException(
-                "Database connection string is missing.");
+                "Database connection string is missing."
+            );
     }
 
     public async Task<int> CreateAsync(User user)
@@ -24,13 +25,13 @@ public class UserRepository : IUserRepository
         await using var connection = new SqlConnection(_connectionString);
 
         return await connection.ExecuteScalarAsync<int>(
-            "identity.User_Insert",
-            new
-            {
-                user.Username,
-                user.CreatedById
-            },
-            commandType: CommandType.StoredProcedure
-        );
+             "identity.User_Insert",
+             new
+             {
+                 user.Username,
+                 user.CreatedById
+             },
+             commandType: CommandType.StoredProcedure
+         );
     }
 }
