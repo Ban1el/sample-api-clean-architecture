@@ -6,5 +6,7 @@ namespace SampleApi.Application.Interfaces
     public interface IUserService
     {
         Task<ServiceResult<int>> CreateAsync(CreateUserDto dto);
+        Task<ServiceResult<bool>> UpdateAsync(int id, UpdateUserDto dto);
+        Task<ServiceResult<UserDto>> GetByIdAsync(int id);
     }
 }

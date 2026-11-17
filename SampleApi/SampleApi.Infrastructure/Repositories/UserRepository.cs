@@ -34,4 +34,32 @@ public class UserRepository : IUserRepository
              commandType: CommandType.StoredProcedure
          );
     }
+
+    public async Task<User?> GetByIdAsync(int id)
+    {
+        await using var connection = new SqlConnection(_connectionString);
+
+        return await connection.QuerySingleOrDefaultAsync<User>(
+            "identity.User_SelectById",
+            new { Id = id },
+            commandType: CommandType.StoredProcedure
+        );
+    }
+
+    public async Task<bool> UpdateAsync(User user)
+    {
+        await using var connection = new SqlConnection(_connectionString);
+
+        var affectedRows = await connection.ExecuteAsync(
+            "identity.User_Update",
+            new
+            {
+                user.Id,
+                user.Username
+            },
+            commandType: CommandType.StoredProcedure
+        );
+
+        return affectedRows > 0;
+    }
 }

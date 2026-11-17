@@ -16,5 +16,14 @@ namespace SampleApi.Domain.Entities
             CreatedById = createdById;
             DateCreated = DateTime.UtcNow;
         }
+
+        public void UpdateUsername(string username)
+        {
+            if (string.IsNullOrWhiteSpace(username))
+                throw new ArgumentException("Username is required.");
+
+            Username = username;
+            DateUpdated = DateTime.UtcNow;
+        }
     }
 }

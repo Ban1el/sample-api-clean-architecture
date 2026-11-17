@@ -43,9 +43,55 @@ public class UserController : ControllerBase
         );
     }
 
+    [HttpPut("{id:int}")]
+    public async Task<IActionResult> Update(
+    int id,
+    UpdateUserDto dto)
+    {
+        var result = await _userService.UpdateAsync(id, dto);
+
+        if (!result.Success)
+        {
+            return BadRequest(new ProblemDetails
+            {
+                Status = StatusCodes.Status400BadRequest,
+                Title = "User Update Failed",
+                Detail = result.Error
+            });
+        }
+
+        var response = new ApiResponse<bool>
+        {
+            Success = true,
+            Message = "User updated successfully.",
+            Data = result.Data
+        };
+
+        return Ok(response);
+    }
+
     [HttpGet("{id:int}")]
     public async Task<IActionResult> GetById(int id)
     {
-        throw new NotImplementedException();
+        var result = await _userService.GetByIdAsync(id);
+
+        if (!result.Success)
+        {
+            return NotFound(new ProblemDetails
+            {
+                Status = StatusCodes.Status404NotFound,
+                Title = "User Not Found",
+                Detail = result.Error
+            });
+        }
+
+        var response = new ApiResponse<UserDto>
+        {
+            Success = true,
+            Message = "User retrieved successfully.",
+            Data = result.Data
+        };
+
+        return Ok(response);
     }
 }
