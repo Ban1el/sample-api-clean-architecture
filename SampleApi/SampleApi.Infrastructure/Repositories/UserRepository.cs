@@ -1,8 +1,9 @@
 ﻿using Dapper;
 using Microsoft.Data.SqlClient;
-using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 using SampleApi.Application.Interfaces;
 using SampleApi.Domain.Entities;
+using SampleApi.Infrastructure.Configurations;
 using System.Data;
 
 namespace SampleApi.Infrastructure.Repositories;
@@ -11,11 +12,12 @@ public class UserRepository : IUserRepository
 {
     private readonly string _connectionString;
 
-    public UserRepository(IConfiguration configuration)
+    public UserRepository(IOptions<DatabaseOptions> options)
     {
-        _connectionString =
-            configuration.GetConnectionString("DefaultConnection")
-            ?? throw new InvalidOperationException(
+        _connectionString = options.Value.DefaultConnection;
+
+        if (string.IsNullOrWhiteSpace(_connectionString))
+            throw new InvalidOperationException(
                 "Database connection string is missing."
             );
     }
@@ -25,14 +27,14 @@ public class UserRepository : IUserRepository
         await using var connection = new SqlConnection(_connectionString);
 
         return await connection.ExecuteScalarAsync<int>(
-             "identity.User_Insert",
-             new
-             {
-                 user.Username,
-                 user.CreatedById
-             },
-             commandType: CommandType.StoredProcedure
-         );
+            "identity.User_Insert",
+            new
+            {
+                user.Username,
+                user.CreatedById
+            },
+            commandType: CommandType.StoredProcedure
+        );
     }
 
     public async Task<User?> GetByIdAsync(int id)

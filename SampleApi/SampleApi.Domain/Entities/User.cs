@@ -4,7 +4,7 @@ namespace SampleApi.Domain.Entities
 {
     public class User : BaseEntity
     {
-        public string Username { get; set; } = string.Empty;
+        public string Username { get; private set; } = string.Empty;
         private User() { }
 
         public User(string username, int? createdById)
