@@ -1,7 +1,7 @@
 ﻿using SampleApi.Application.DTOs.Users;
 using SampleApi.Application.Results;
 
-namespace SampleApi.Application.Interfaces
+namespace SampleApi.Application.Interfaces.Services
 {
     public interface IUserService
     {

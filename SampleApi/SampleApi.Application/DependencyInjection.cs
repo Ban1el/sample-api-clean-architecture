@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using SampleApi.Application.Interfaces;
+using SampleApi.Application.Interfaces.Services;
 using SampleApi.Application.Services;
 
 namespace SampleApi.Application;

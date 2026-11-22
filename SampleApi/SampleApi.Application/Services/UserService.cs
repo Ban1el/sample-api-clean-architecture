@@ -1,5 +1,6 @@
 ﻿using SampleApi.Application.DTOs.Users;
-using SampleApi.Application.Interfaces;
+using SampleApi.Application.Interfaces.Repositories;
+using SampleApi.Application.Interfaces.Services;
 using SampleApi.Application.Results;
 using SampleApi.Domain.Entities;
 

@@ -1,7 +1,7 @@
 ﻿using Dapper;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Options;
-using SampleApi.Application.Interfaces;
+using SampleApi.Application.Interfaces.Repositories;
 using SampleApi.Domain.Entities;
 using SampleApi.Infrastructure.Configurations;
 using System.Data;

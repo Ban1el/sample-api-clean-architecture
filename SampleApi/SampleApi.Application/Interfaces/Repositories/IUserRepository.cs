@@ -2,7 +2,7 @@
 using SampleApi.Application.Results;
 using SampleApi.Domain.Entities;
 
-namespace SampleApi.Application.Interfaces
+namespace SampleApi.Application.Interfaces.Repositories
 {
     public interface IUserRepository
     {

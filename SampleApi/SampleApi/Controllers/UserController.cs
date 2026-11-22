@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SampleApi.Application.Interfaces;
 using SampleApi.Application.DTOs.Users;
 using SampleApi.Contracts.Responses;
+using SampleApi.Application.Interfaces.Services;
 
 [ApiController]
 [Route("api/[controller]")]

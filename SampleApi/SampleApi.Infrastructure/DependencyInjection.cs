@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using SampleApi.Application.Interfaces;
+using SampleApi.Application.Interfaces.Repositories;
 using SampleApi.Infrastructure.Configurations;
 using SampleApi.Infrastructure.Repositories;
 
