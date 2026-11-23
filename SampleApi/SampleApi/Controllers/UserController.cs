@@ -70,6 +70,31 @@ public class UserController : ControllerBase
         return Ok(response);
     }
 
+    [HttpDelete("{id:int}")]
+    public async Task<IActionResult> Delete(int id)
+    {
+        var result = await _userService.DeleteAsync(id);
+
+        if (!result.Success)
+        {
+            return NotFound(new ProblemDetails
+            {
+                Status = StatusCodes.Status404NotFound,
+                Title = "User Not Found",
+                Detail = result.Error
+            });
+        }
+
+        var response = new ApiResponse<bool>
+        {
+            Success = true,
+            Message = "User deleted successfully.",
+            Data = result.Data
+        };
+
+        return Ok(response);
+    }
+
     [HttpGet("{id:int}")]
     public async Task<IActionResult> GetById(int id)
     {

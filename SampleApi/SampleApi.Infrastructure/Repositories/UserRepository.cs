@@ -37,6 +37,19 @@ public class UserRepository : IUserRepository
         );
     }
 
+    public async Task<bool> DeleteAsync(int id)
+    {
+        await using var connection = new SqlConnection(_connectionString);
+
+        var affectedRows = await connection.ExecuteAsync(
+            "identity.User_Delete",
+            new { Id = id },
+            commandType: CommandType.StoredProcedure
+        );
+
+        return affectedRows > 0;
+    }
+
     public async Task<User?> GetByIdAsync(int id)
     {
         await using var connection = new SqlConnection(_connectionString);

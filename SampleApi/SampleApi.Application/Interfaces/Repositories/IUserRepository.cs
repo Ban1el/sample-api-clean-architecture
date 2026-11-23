@@ -9,5 +9,6 @@ namespace SampleApi.Application.Interfaces.Repositories
         Task<int> CreateAsync(User user);
         Task<bool> UpdateAsync(User user);
         Task<User?> GetByIdAsync(int id);
+        Task<bool> DeleteAsync(int id);
     }
 }
