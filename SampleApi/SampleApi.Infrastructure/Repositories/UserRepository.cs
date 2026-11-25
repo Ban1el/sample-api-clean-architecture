@@ -2,7 +2,7 @@
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Options;
 using SampleApi.Application.Interfaces.Repositories;
-using SampleApi.Domain.Entities;
+using SampleApi.Domain.Entities.Identity;
 using SampleApi.Infrastructure.Configurations;
 using System.Data;
 

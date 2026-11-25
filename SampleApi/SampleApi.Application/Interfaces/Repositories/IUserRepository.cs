@@ -1,6 +1,6 @@
 ﻿using SampleApi.Application.DTOs.Users;
 using SampleApi.Application.Results;
-using SampleApi.Domain.Entities;
+using SampleApi.Domain.Entities.Identity;
 
 namespace SampleApi.Application.Interfaces.Repositories
 {

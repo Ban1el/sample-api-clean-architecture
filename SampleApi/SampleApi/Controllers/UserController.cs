@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SampleApi.Api.Attributes;
 using SampleApi.Application.DTOs.Users;
-using SampleApi.Contracts.Responses;
 using SampleApi.Application.Interfaces.Services;
+using SampleApi.Contracts.Responses;
 
 [ApiController]
 [Route("api/[controller]")]
@@ -15,6 +16,7 @@ public class UserController : ControllerBase
     }
 
     [HttpPost]
+    [Idempotency]
     public async Task<IActionResult> Create(CreateUserDto dto)
     {
         var result = await _userService.CreateAsync(dto);

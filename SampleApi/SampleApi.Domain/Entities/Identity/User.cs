@@ -1,6 +1,6 @@
 ﻿using SampleApi.Domain.Common;
 
-namespace SampleApi.Domain.Entities
+namespace SampleApi.Domain.Entities.Identity
 {
     public class User : BaseEntity
     {
